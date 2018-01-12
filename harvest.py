@@ -91,13 +91,19 @@ class Melon(object):
         self.field = field
         self.harvester = harvester
 
+    def __repr__(self):
+        """Provide helpful output when printing"""
+
+        repr_str = "<Melon type={type} field={field} harvester={harvester}>"
+        return repr_str.format(type=self.melon_type.name,
+                               field=self.field,
+                               harvester=self.harvester)
+
     def is_sellable(self):
         """Returns True if individual melon is sellable."""
 
-        if self.shape_rating > 5 and self.color_rating > 5 and self.field != 3:
-            return True
-
-        return False
+        return (self.shape_rating > 5 and self.color_rating > 5 and
+                self.field != 3)
 
 
 def make_melons(melon_types):
@@ -148,4 +154,3 @@ def get_sellability_report(melons):
             print "It is not sellable."
         else:
             print "It is not sellable."
-
